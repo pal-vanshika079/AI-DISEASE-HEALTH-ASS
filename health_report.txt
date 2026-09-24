@@ -1,0 +1,32 @@
+AI HEALTH ASSESSMENT REPORT
+
+Selected Symptoms:
+Sore Throat, Difficulty Breathing
+
+Most Likely Condition:
+Bronchitis
+
+Top 3 Model Predictions:
+Bronchitis — 100.0% model score
+Tonsillitis — 0.0% model score
+Viral Fever — 0.0% model score
+
+Health Guidance:
+Rest, stay hydrated, and avoid smoke or other respiratory irritants.
+
+Report Status:
+Educational AI assessment
+
+Why this prediction?
+The model made this prediction based on the symptoms you selected.
+
+Health Assistant:
+Rest, stay hydrated, and follow the health guidance provided above.
+
+Red Flag:
+If you have severe breathing difficulty, chest pain, fainting,
+confusion, or rapidly worsening symptoms, seek urgent medical care.
+
+Important:
+Model scores are not medical probabilities or a medical diagnosis.
+Please consult a qualified healthcare professional for medical advice.

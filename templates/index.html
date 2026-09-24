@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     
+<title>AI Disease Health Assistant</title>
+
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+    width: 90%;
+    max-width: 750px;
+    margin: 40px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+}
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    margin-bottom: 8px;
+    font-size: 32px;
+}
+
+.tagline {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #333;
+    background: #f7f9fc;
+    padding: 9px 15px;
+    border-radius: 8px;
+    border: 1px solid #e5e9ef;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.nav a:hover {
+    background: #eef2f7;
+    transform: translateY(-2px);
+}
+
+        h1 {
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 32px;
+    letter-spacing: 0.5px;
+}
+
+        .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+    .symptom-search {
+    width: 100%;
+    padding: 13px;
+    box-sizing: border-box;
+    border: 1px solid #d5dbe3;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+        .symptoms {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .symptom {
+    background: #f7f9fc;
+    padding: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #e5e9ef;
+    transition: 0.2s;
+}
+
+        .symptom:hover {
+    background: #eef2f7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .predict-btn {
+    background: #333;
+    color: white;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.predict-btn:hover {
+    background: #555;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+        .note {
+            margin-top: 20px;
+            padding: 12px;
+            background: #fff8e1;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #555;
+        }
+    @media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .header h1 {
+        font-size: 25px;
+    }
+
+    .symptoms {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .nav {
+        gap: 6px;
+    }
+
+    .nav a {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+}
+
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+
+    <h1>🩺 AI Disease Health Assistant</h1>
+
+    <p class="tagline">
+        AI-Powered Educational Health Assessment
+    </p>
+
+    <div class="nav">
+        <a href="/">🏠 Home</a>
+        <a href="#assistant">💬 Health Assistant</a>
+        <a href="#about">ℹ️ About</a>
+    </div>
+
+</div>
+
+        <form action="/predict" method="POST">
+            <div class="note">
+    <h3>⚙️ How It Works</h3>
+    <p>1️⃣ Select your symptoms → 2️⃣ AI analyzes them → 3️⃣ Get prediction & health guidance</p>
+</div>
+<div class="note">
+    <h3>📌 About This Project</h3>
+
+    <p>
+        This project uses Artificial Intelligence and Machine Learning
+        to analyze selected symptoms and provide an educational disease
+        prediction along with basic health guidance.
+    </p>
+</div>
+<div class="note">
+    <h3>✨ Key Features</h3>
+
+    <p>🤖 AI-Based Disease Prediction</p>
+    <p>📊 Top 3 Model Predictions</p>
+    <p>🩺 Health Guidance</p>
+    <p>💬 Interactive Health Assistant</p>
+    <p>📄 Downloadable TXT & PDF Reports</p>
+    <p>⚠️ Red-Flag Health Warning</p>
+</div>
+<input
+    type="text"
+    id="symptomSearch"
+    class="symptom-search"
+    placeholder="🔎 Search symptoms..."
+    onkeyup="searchSymptoms()"
+>
+            <div class="symptoms">
+
+                <label class="symptom">
+                    <input type="checkbox" name="symptoms" value="Fever">
+                    Fever
+                </label>
+
+                <label class="symptom">
+                    <input type="checkbox" name="symptoms" value="Cough">
+                    Cough
+                </label>
+
+                <label class="symptom">
+                    <input type="checkbox" name="symptoms" value="Headache">
+                    Headache
+                </label>
+
+                <label class="symptom">
+                    <input type="checkbox" name="symptoms" value="Tiredness">
+                    Tiredness
+                </label>
+
+                <label class="symptom">
+                    <input type="checkbox" name="symptoms" value="Nausea">
+                    Nausea
+                </label>
+
+                <label class="symptom">
+                    <input type="checkbox" name="symptoms" value="Vomiting">
+                    Vomiting
+                </label>
+
+                <label class="symptom">
+                    <input type="checkbox" name="symptoms" value="Sore Throat">
+                    Sore Throat
+                </label>
+
+                <label class="symptom">
+                    <input type="checkbox" name="symptoms" value="Difficulty Breathing">
+                    Difficulty Breathing
+                </label>
+
+            </div>
+
+            <button type="submit" class="predict-btn">
+                🔍 Predict Disease
+            </button>
+
+        </form>
+
+        <div class="note">
+            <h3>🩺 Health Assistant</h3>
+            <p>Ask a health-related question:</p>
+            <form action="/health-assistant" method="POST">
+                <input type="text" name="question"
+                placeholder="Example: What should I do for cough?"
+                style="width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 12px;"
+required>
+
+    <button type="submit" class="predict-btn">
+    💬 Ask Health Assistant
+    </button>
+
+</form>
+            ⚠️ This system is for educational purposes only.
+            The prediction is not a medical diagnosis.
+        </div>
+
+    </div>
+    <script>
+function searchSymptoms() {
+    let input = document.getElementById("symptomSearch");
+    let filter = input.value.toLowerCase();
+
+    let symptoms = document.querySelectorAll(".symptom");
+
+    symptoms.forEach(function(symptom) {
+        let text = symptom.textContent.toLowerCase();
+
+        if (text.includes(filter)) {
+            symptom.style.display = "";
+        } else {
+            symptom.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
