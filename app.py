@@ -496,7 +496,7 @@ def health_assistant():
 def predict():
 
     symptoms = request.form.getlist("symptoms")
-    if len(symptoms) < 2:
+    if len(symptoms) < 1:
        return """
         <h2>⚠️ More Symptoms Needed</h2>
         <p>Please select at least 2 symptoms for a more meaningful educational assessment.</p>
